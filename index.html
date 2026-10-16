@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>3D Street Racing Game</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  overflow:hidden;
+  background:#05070d;
+  font-family:Arial,sans-serif;
+  touch-action:none;
+}
+
+#hud{
+  position:fixed;
+  top:15px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:10;
+
+  display:flex;
+  gap:25px;
+  padding:12px 25px;
+
+  color:white;
+  background:rgba(0,0,0,.7);
+  border:2px solid #00e5ff;
+  border-radius:14px;
+
+  box-shadow:0 0 20px #00e5ff;
+}
+
+.stat{
+  text-align:center;
+}
+
+.stat b{
+  display:block;
+  color:#00e5ff;
+  font-size:22px;
+}
+
+#nitroBox{
+  position:fixed;
+  top:90px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:10;
+
+  width:220px;
+  height:18px;
+
+  border:2px solid white;
+  background:#222;
+}
+
+#nitro{
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,#00e5ff,#0066ff);
+}
+
+#message{
+  position:fixed;
+  top:125px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:10;
+
+  color:#fff;
+  font-size:20px;
+  font-weight:bold;
+  text-shadow:0 0 10px black;
+}
+
+#controls{
+  position:fixed;
+  bottom:20px;
+  left:0;
+  width:100%;
+  padding:0 20px;
+  display:flex;
+  justify-content:space-between;
+  z-index:20;
+
+  pointer-events:none;
+}
+
+.controlGroup{
+  display:flex;
+  gap:10px;
+  pointer-events:auto;
+}
+
+.btn{
+  width:65px;
+  height:65px;
+  border:none;
+  border-radius:50%;
+
+  background:rgba(0,0,0,.65);
+  color:white;
+
+  font-size:27px;
+  font-weight:bold;
+
+  border:2px solid #00e5ff;
+  box-shadow:0 0 12px #00e5ff;
+}
+
+.btn:active{
+  transform:scale(.9);
+  background:#0077aa;
+}
+
+#restart{
+  display:none;
+
+  position:fixed;
+  top:55%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:30;
+
+  padding:15px 30px;
+
+  border:0;
+  border-radius:25px;
+
+  font-size:20px;
+  font-weight:bold;
+
+  background:#00e5ff;
+  color:#00131a;
+  cursor:pointer;
+}
+
+#gameOver{
+  display:none;
+
+  position:fixed;
+  top:40%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:30;
+
+  color:white;
+  font-size:45px;
+  font-weight:bold;
+  text-align:center;
+
+  text-shadow:0 0 25px red;
+}
+
+.small{
+  font-size:16px;
+  color:#ddd;
+  margin-top:5px;
+}
+
+@media(max-width:600px){
+  #hud{
+    gap:12px;
+    padding:8px 12px;
+  
